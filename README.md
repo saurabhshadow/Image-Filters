@@ -18,6 +18,6 @@ The language used is Python3
   ```sh
       OpenCV
       
-      pip install opencv
+      pip install opencv-python
 ```
 
