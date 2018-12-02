@@ -1,6 +1,10 @@
 import cv2
 class BlacknWhite1:
-
+    """BlacknWhite Filter
+        A class that applies BlacknWhite filter to an image.
+        The class uses downsampling, bilateral filter and upsampling to create
+        a BlacknWhite filter.
+    """
     def __init__(self):
         pass
 
@@ -26,32 +30,11 @@ class BlacknWhite1:
         # upsample image to original size
         for _ in range(numDownSamples):
             img_color = cv2.pyrUp(img_color)
-        #cv2.imshow("upscaling",img_color)
-        #cv2.waitKey(0)
+        cv2.imshow("upscaling",img_color)
+        cv2.waitKey(0)
         # -- STEPS 2 and 3 --
         # convert to grayscale and apply median blur
         img_gray = cv2.cvtColor(img_rgb, cv2.COLOR_RGB2GRAY)
-        #img_blur = cv2.medianBlur(img_gray, 3)
-        #cv2.imshow("grayscale+median blur",img_color)
-        #cv2.waitKey(0)
-        # -- STEP 4 --
-        # detect and enhance edges
-        #img_edge = cv2.adaptiveThreshold(img_blur, 255,
-                                         #cv2.ADAPTIVE_THRESH_MEAN_C,
-                                         #cv2.THRESH_BINARY,9, 2)
-        #cv2.imshow("edge",img_edge)
-        #cv2.waitKey(0)
-
-        # -- STEP 5 --
-        # convert back to color so that it can be bit-ANDed with color image
-        #(x,y,z) = img_color.shape
-        #img_edge = cv2.resize(img_edge,(y,x))
-        #img_edge = cv2.cvtColor(img_edge, cv2.COLOR_GRAY2RGB)
-        #cv2.imwrite("edge.png",img_edge)
-        #cv2.imshow("Sketch filter", img_edge)
-        #cv2.waitKey(0)
-        #img_edge = cv2.resize(img_edge,(i for i in img_color.shape[:2]))
-        #print img_edge.shape, img_color.shape
         return img_gray
 
 tmp_canvas =BlacknWhite1()
