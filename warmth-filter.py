@@ -2,7 +2,7 @@ import cv2 as cv
 import numpy as np
 from scipy.interpolate import UnivariateSpline
 
-class warmth-filter:
+class warmth_filter:
     """warmth-filter--
         This filter will improve all tones and absorb
         the blues by adding a slight yellow tint.
@@ -25,11 +25,11 @@ class warmth-filter:
         img_rgb = cv.merge((r,g,b))
 
         # saturation increased
-        h,s,v = cv.split(cv.cvtColor(img_rgb, cv.COLOR_BGR2HSV))
+        h,s,v = cv.split(cv.cvtColor(img_rgb, cv.COLOR_RGB2HSV))
         s = cv.LUT(s, self.increaseChannel).astype(np.uint8)
 
 
-        return cv.cvtColor(cv.merge((h,s,v)), cv.COLOR_HSV2BGR)
+        return cv.cvtColor(cv.merge((h,s,v)), cv.COLOR_HSV2RGB)
 
     def LUT_8UC1(self, x, y):
         #Create look-up table using scipy spline interpolation function
