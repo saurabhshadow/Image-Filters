@@ -1,5 +1,5 @@
 import cv2
-class BlacknWhite1:
+class BlacknWhite(object):
     """BlacknWhite Filter
         A class that applies BlacknWhite filter to an image.
         The class uses downsampling, bilateral filter and upsampling to create
@@ -30,17 +30,19 @@ class BlacknWhite1:
         # upsample image to original size
         for _ in range(numDownSamples):
             img_color = cv2.pyrUp(img_color)
-        cv2.imshow("upscaling",img_color)
-        cv2.waitKey(0)
+        #cv2.imshow("upscaling",img_color)
+        #cv2.waitKey(0)
         # -- STEPS 2 and 3 --
         # convert to grayscale and apply median blur
         img_gray = cv2.cvtColor(img_rgb, cv2.COLOR_RGB2GRAY)
         return img_gray
 
-tmp_canvas =BlacknWhite1()
-file_name = "car.jpg" #File_name will come here
-res = tmp_canvas.render(file_name)
-cv2.imwrite("BW1 version.jpg", res)
-cv2.imshow("BW1 version", res)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+    def start(self, img_path):
+        tmp_canvas =BlacknWhite() #make a temporary object
+        file_name = img_path #File_name will come here
+        res = tmp_canvas.render(file_name)
+        cv2.imwrite("BlacNwhite_version.jpg", res)
+        cv2.imshow("BlacNwhite version", res)
+        cv2.waitKey(0)
+        cv2.destroyAllWindows()
+        print("Image saved as 'BlacNwhite_version.jpg'")
