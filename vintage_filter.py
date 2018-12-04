@@ -1,5 +1,6 @@
 import cv2
-class vintageFilter:
+
+class Vintage(object):
 
     def __init__(self):
         pass
@@ -31,10 +32,12 @@ class vintageFilter:
 
         return newImage
 
-tmp_canvas = vintageFilter()
-file_name = "car.jpg" #File_name will come here
-res = tmp_canvas.render(file_name)
-cv2.imwrite("BW1 version.jpg", res)
-cv2.imshow("BW1 version", res)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+    def start(self, img_path):
+        tmp_canvas = Vintage()
+        file_name = img_path #File_name will come here
+        res = tmp_canvas.render(file_name)
+        cv2.imwrite("Vintage_version.jpg", res)
+        cv2.imshow("Vintage Version", res)
+        cv2.waitKey(0)
+        cv2.destroyAllWindows()
+        print("Image saved as 'Vintage_version.jpg'")
