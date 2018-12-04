@@ -1,5 +1,5 @@
 import cv2
-class Cartoonizer:
+class Cartoonizer(object):
     """Cartoonizer effect
         A class that applies a cartoon effect to an image.
         The class uses a bilateral filter and adaptive thresholding to create
@@ -51,17 +51,19 @@ class Cartoonizer:
         (x,y,z) = img_color.shape
         img_edge = cv2.resize(img_edge,(y,x))
         img_edge = cv2.cvtColor(img_edge, cv2.COLOR_GRAY2RGB)
-        cv2.imwrite("edge.png",img_edge)
+        #cv2.imwrite("edge.png",img_edge)
         #cv2.imshow("step 5", img_edge)
         #cv2.waitKey(0)
         #img_edge = cv2.resize(img_edge,(i for i in img_color.shape[:2]))
         #print img_edge.shape, img_color.shape
         return cv2.bitwise_and(img_color, img_edge)
 
-tmp_canvas = Cartoonizer()
-file_name = "car.jpg" #File_name will come here
-res = tmp_canvas.render(file_name)
-cv2.imwrite("Cartoon version.jpg", res)
-cv2.imshow("Cartoon version", res)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+    def start(self, img_path):
+        tmp_canvas = Cartoonizer() #make a temporary object
+        file_name = img_path #File_name will come here
+        res = tmp_canvas.render(file_name)
+        cv2.imwrite("Cartoon_version.jpg", res)
+        cv2.imshow("Cartoon version", res)
+        cv2.waitKey(0)
+        cv2.destroyAllWindows()
+        print("Image saved as 'Cartoon_version.jpg'")
