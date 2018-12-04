@@ -17,8 +17,6 @@ class warmth-filter:
                                                  [0, 30,  80, 120, 192])
 
     def render(self, img_rgb):
-        
-        
         img_rgb = cv.imread(img_rgb)
         cv.imshow("Original", img_rgb)
         r,g,b = cv.split(img_rgb)
