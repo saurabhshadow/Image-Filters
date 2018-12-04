@@ -1,5 +1,5 @@
 import cv2
-class Sketch:
+class Sketcher(object):
     """Sketch Filter
         A class that applies Sketch filter to an image.
         The class uses a bilateral filter and adaptive thresholding to create
@@ -48,10 +48,13 @@ class Sketch:
         #cv2.imwrite("edge.png",img_edge)
         return img_edge
 
-tmp_canvas = Sketch()
-file_name = "sample.png" #File_name will come here
-res = tmp_canvas.render(file_name)
-cv2.imwrite("Sketch version.jpg", res)
-cv2.imshow("Sketch version", res)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+    def start(self, img_path):
+        tmp_canvas = Sketcher() #make a temporary object
+        file_name = img_path #File_name will come here
+        res = tmp_canvas.render(file_name)
+        cv2.imwrite("Sketch version.jpg", res)
+        cv2.imshow("Sketch version", res)
+        cv2.waitKey(0)
+        cv2.destroyAllWindows()
+        print("Image saved as 'Sketch version.jpg'")
+	
