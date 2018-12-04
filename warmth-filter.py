@@ -18,7 +18,7 @@ class warmth-filter:
 
     def render(self, img_rgb):
         
-        # increase red and decrease blue
+        
         img_rgb = cv.imread(img_rgb)
         cv.imshow("Original", img_rgb)
         r,g,b = cv.split(img_rgb)
