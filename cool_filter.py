@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 from scipy.interpolate import UnivariateSpline
 
-class cool_filter:
+class Cool(object):
     """cool_filter ---
         This class will apply cool filter to an image 
         by giving a sky blue effect to the input image.
@@ -17,7 +17,8 @@ class cool_filter:
 
     def render(self, img_rgb):
         img_rgb = cv2.imread(img_rgb)
-        cv2.imshow("Original", img_rgb)
+        img_rgb = cv2.resize(img_rgb, (1024,600))
+        #cv2.imshow("Original", img_rgb)
         r,g,b = cv2.split(img_rgb)
         r = cv2.LUT(r, self.increaseChannel).astype(np.uint8)
         b = cv2.LUT(b, self.decreaseChannel).astype(np.uint8)
@@ -35,10 +36,12 @@ class cool_filter:
         spl = UnivariateSpline(x, y)
         return spl(range(256))
 
-class_object = cool_filter()
-file_name = "beach.jpg" #File_name will come here
-res = class_object.render(file_name)
-cv2.imwrite("cool_image.jpg", res)
-cv2.imshow("Cool-Filter version", res)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+    def start(self, img_path):
+        tmp_canvas = Cool() #make a temporary object
+        file_name = img_path #File_name will come here
+        res = tmp_canvas.render(file_name)
+        cv2.imwrite("Cool_version.jpg", res)
+        cv2.imshow("Cool version", res)
+        cv2.waitKey(0)
+        cv2.destroyAllWindows()
+        print("Image saved as 'Cool_version.jpg'")
