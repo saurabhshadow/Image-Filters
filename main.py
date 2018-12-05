@@ -62,4 +62,4 @@ if __name__ == '__main__':
 			print("Exit")
 			sys.exit()
 
-		filter_num = input("\nSelect filters from 1, 2, 3, 4, 5 : ")
+		filter_num = input("\nSelect filters from 1, 2, 3, 4, 5, 6 : ")
