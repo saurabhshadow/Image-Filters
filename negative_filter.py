@@ -8,13 +8,14 @@ def findMax(k):
             mx = i
     return mx
 
-class negativeFilter:
+class Negative(object):
 
     def __init__(self):
         pass
 
     def render(self, img_rgb):
         img_gray = cv2.imread(img_rgb, 0)
+        img_gray = cv2.resize(img_gray, (1024,600))
         #get all image values
         k = []
         for i in range(img_gray.shape[0]):
@@ -30,12 +31,13 @@ class negativeFilter:
             dst[i,j] = L - dst[i,j]
         return dst
 
-
-
-tmp_canvas = negativeFilter()
-file_name = "car.jpg" #File_name will come here
-res = tmp_canvas.render(file_name)
-cv2.imwrite("BW1 version.jpg", res)
-cv2.imshow("BW1 version", res)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+    def start(self, img_path):
+        tmp_canvas = Negative() #make a temporary object
+        file_name = img_path #File_name will come here
+        res = tmp_canvas.render(file_name)
+        cv2.imwrite("Negative_version.jpg", res)
+        cv2.imshow("Negative Version", res)
+        cv2.waitKey(0)
+        cv2.destroyAllWindows()
+        print("Image saved as 'Negative_version.jpg'")
+	
