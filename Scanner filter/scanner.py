@@ -2,13 +2,23 @@ from PIL import Image
 import numpy as np
 import cv2
 
-"""Scanner effect
-	A module that applies a scanner effect to an image.
-"""
+
 class scanner:
+	
+	"""Scanner effect
+		This class will apply applies a scanner effect to an image
+		by maximizing white colour pixels, scaling the contrast 
+		and enhancing sharpness. 
+	"""
 	
 	def __init__(self):
 		pass
+
+	def resize(self,image,window_height = 500):
+		aspect_ratio = float(image.shape[1])/float(image.shape[0])
+		window_width = window_height/aspect_ratio
+		image = cv2.resize(image, (int(window_height),int(window_width)))
+		return image	
 	
 	def map(x, in_min, in_max, out_min, out_max):
 		return int((x-in_min) * (out_max-out_min) / (in_max-in_min) + out_min)
@@ -93,12 +103,13 @@ class scanner:
 		iO = (iI-minI)*(((maxO-minO)/(maxI-minI))+minO)+20
 		return iO 
 
-# Create an image object
+
 
 image = cv2.imread("./doc.jpg")
 tmp_canvas = scanner()
-cv2_image = tmp_canvas.sharp(image)
-cv2_image = cv2.resize(cv2_image,(500,700))
+cv2_image = tmp_canvas.sharp(image)				#resize no used before sharpness filtering as degrades picture quality
+image = tmp_canvas.resize(image,500)
+cv2_image = tmp_canvas.resize(cv2_image,500)
 cv2_image = tmp_canvas.saturation(cv2_image)
 
 cv2_image = tmp_canvas.whitebalance(cv2_image)
@@ -106,12 +117,11 @@ cv2_image = tmp_canvas.whitebalance(cv2_image)
 cv2_image = cv2.cvtColor(cv2_image.astype("uint8"),cv2.COLOR_HSV2RGB)
 
 pil_image = Image.fromarray(cv2_image)
-imageObject = pil_image.resize((500,700))
 
 #imageObject.show()
 
 # Split the red, green and blue bands from the Image
-multiBands = imageObject.split()
+multiBands = pil_image.split()
 
 
 IR = multiBands[0].getextrema()
@@ -133,7 +143,7 @@ normalizedImage.show()
 # Display the original image 
 image = cv2.cvtColor(image,cv2.COLOR_BGR2RGB)
 image = Image.fromarray(image)
-image = image.resize((500,700))
+#image = image.resize((500,700))
 image.show()
 
 cv2.waitKey(0)
