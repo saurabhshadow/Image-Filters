@@ -1,14 +1,24 @@
 # Image-Filters
 
-[![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://forthebadge.com)
+[![Contributors needed](https://img.shields.io/badge/contribution-needed-blue.svg)](CONTRIBUTING.md)
+
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/check-it-out.svg)](https://forthebadge.com)
+
+## Table of Content:-
+
+* [Introduction](#Introduction)
+   - [Technologies](#Technologies)
+* [Setup instructions](#setup-instructions)
+* [How can I support developers?](#how-can-i-support-developers)
 
 ## Introduction
 
 This project aims towards making Image filters using the python OpenCV library that can be used as filters for an photo editing application.
-Some basic filters include : 
+Some basic filters include :
 - black and white
-- sketch 
+- sketch
 - cartoonizer
 #### Example :
 - Original Input Image
@@ -28,11 +38,11 @@ Some basic filters include :
 ![blacnwhite_version](https://user-images.githubusercontent.com/25251763/50043633-09289c80-009e-11e9-93fe-924d2b8c967e.jpg)
 
 
-## Technologies :
+### Technologies :
 - `Python 3.6`
 - `OpenCV (cv2)`
 
-### Setup instructions :
+## Setup instructions👨‍💻:
 
 #### Initialisation :
 - Fork and clone the project in your system.
@@ -41,5 +51,10 @@ Some basic filters include :
 ### Running instructions :
  - Open the terminal in `Image-Filters` directory and run `main.py`
  - If you get an error, make sure all the import statements are working, if not, install using pip-install or google the install process.
- 
- 
+
+## How can I support developers?
+
+- Star our GitHub repo 🌟
+- Create pull requests, [create an issue](https://github.com/NJACKWinterOfCode/Image-Filters/issues), suggest new features or documentation updates 🔧
+
+<p align="center">Made with ❤️ by [Ishita Das](https://github.com/ishita27)
